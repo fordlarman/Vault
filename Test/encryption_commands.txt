@@ -1,0 +1,5 @@
+How to encrypt a text file with password:
+openssl enc -aes-256-cbc -salt -in file.txt -out file.enc -k password
+
+How to decrypt the file:
+openssl enc -d -aes-256-cbc -in file.enc -out file.txt -k password
