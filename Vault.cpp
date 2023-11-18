@@ -10,7 +10,7 @@
 //Universal Datatypes
 
 //need to take input from user
-std::string file = "file.txt";
+std::string file = "test_export.csv";
 std::string password = "pa33word";
 
 //Encrypt file
@@ -51,8 +51,17 @@ void read(std::string file) {
 
 //Banner
 void banner(){
-  std::cout << "V A U L T " << std::endl;
-  std::cout << "Encrypted Password Manager" << std::endl;
+  std::cout << "---------------------------------------------------------------------" << std::endl;
+  std::cout << " /$$$$$$$   /$$$$$$           /$$$$$$   /$$$$$$   /$$$$$$$ /$$$$$$$" << std::endl;
+  std::cout << "| $$__  $$ /$$__  $$ /$$$$$$ /$$__  $$ |____  $$ /$$_____//$$_____/" << std::endl;
+  std::cout << "| $$  \\ $$| $$  \\ $$|______/| $$  \\ $$  /$$$$$$$|  $$$$$$|  $$$$$$ " << std::endl; 
+  std::cout << "| $$  | $$| $$  | $$        | $$  | $$ /$$__  $$ \\____  $$\\____  $$" << std::endl;
+  std::cout << "| $$  | $$|  $$$$$$/        | $$$$$$$/|  $$$$$$$ /$$$$$$$//$$$$$$$/" << std::endl;
+  std::cout << "|__/  |__/ \\______/         | $$____/  \\_______/|_______/|_______/  " << std::endl;
+  std::cout << "                            | $$                                   " << std::endl;                                   
+  std::cout << "                            | $$                                   " << std::endl;                                   
+  std::cout << "                            |__/                                   " << std::endl;
+  std::cout << "--------------------Encrypted Password Manager-----------------------" << std::endl;
 
 }
 
@@ -63,7 +72,7 @@ void banner(){
 //}
 
 //vault instance menu
-void subMenu(){
+void accessVault(){
   int quit = 0;
   std::string select;
   while(quit == 0){
@@ -73,29 +82,36 @@ void subMenu(){
     std::cout << "[3] - Remove Credentials" << std::endl;// Remove existing entry from file.
     std::cout << "[4] - Export Password File" << std::endl;
     std::cin >> select;
-    //check for "quit" command
-    if(select == "quit"){
-      std::exit(1);
-    }else{
-      encrypt(file, password);
-
-    }
+    //check for "quit" comman
   }
 }
 
 
 //Main menu
 void mainMenu(){
+  system("clear");
   int quit = 0;
-  std::string select;
+  int select;
   while(quit == 0){
     std::cout << "[1] Access Vault" << std::endl;
     std::cout << "[2] Create Vault" << std::endl;
     std::cout << "[3] Delete Vault" << std::endl;
-    if (select == "quit"){
-      std::exit(1);
-    }else{
-      subMenu();
+    std::cin >> select;
+    switch(select){
+      case 1:
+        std::cout << "[+] Accessing Vault..." << std::endl;
+        
+        //Select vault, then enter password.
+        break;
+      case 2:
+        std::cout << "[+] Creating new Vault..." << std::endl;
+        //encrypt file and create new vault record
+        encrypt(file, password);
+        break;
+      case 3:
+        std::cout << "[+] Deleting Vault..." << std::endl;
+        //decrypt and delete vault record
+        break;
     }
 
   }
